@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: EMPLOYEE-SERVICE
+  cloud:
+    config:
+      uri: http://localhost:8060
+      #Authentication creds to get access to config server
+      username: user
+      password: password
+      
+#Below entry enables all the actuator endpoints. Used for testing RefreshScope cache refresh from /actuator/refresh      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

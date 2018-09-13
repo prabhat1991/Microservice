@@ -1,0 +1,21 @@
+#Set the server port to 0 so that any random available port get assigned
+server:
+  port: 8062
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8061/eureka
+    register-with-eureka: false
+    fetchRegistry: false
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    hostname: localhost
+            
+#Sleuth logging configuration        
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          sleuth: DEBUG

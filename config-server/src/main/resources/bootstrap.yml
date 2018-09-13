@@ -1,0 +1,17 @@
+server:
+  port: 8060
+
+#When config server is serving from local filesystem the profile should be ACTIVE  
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        git:  
+          uri: classpath:/, classpath:/config, file:./, file:./config
+#Security Config to serve the configs to only authorized services
+  security:
+    user:
+      name: user
+      password: password

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ZUUL-SERVICE
+  cloud:
+    config:
+      uri: http://localhost:8060
+      #Authentication creds to get access to config server
+      username: user
+      password: password
+            
+#Below entry enables all the actuator endpoints.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

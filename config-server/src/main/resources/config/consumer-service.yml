@@ -1,0 +1,28 @@
+#Set the server port to 0 so that any random available port get assigned
+server:
+  port: 0
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8061/eureka
+    register-with-eureka: true
+    fetchRegistry: true
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    hostname: localhost
+    
+#In order to see the hystrix streams the below web endpoints must be exposed
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+        
+#Sleuth logging configuration        
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          sleuth: DEBUG

@@ -1,0 +1,36 @@
+server:
+  port: 8062
+
+#Eureka Configuration gor Zuul  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8061/eureka
+    register-with-eureka: true
+    fetchRegistry: true
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    hostname: localhost
+
+#Zuul Configuration
+zuul: 
+  prefix: /api
+  ignoredServices: /**  
+  routes:
+    employee: 
+      path: /employee/**
+      serviceId: EMPLOYEE-SERVICE
+    department: 
+      path: /department/**
+      serviceId: DEPARTMENT-SERVICE
+    consumer:
+      path: /consumer/**
+      serviceId: CONSUMER-SERVICE
+              
+#Sleuth logging configuration        
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          sleuth: DEBUG
